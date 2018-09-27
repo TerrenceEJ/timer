@@ -35,27 +35,33 @@ public class timerView extends JFrame{
 		
 		//JFrame frame = new JFrame("BoxLayout");
 
-		JPanel yPanel = new JPanel();
-		BoxLayout boxlayout = new BoxLayout(yPanel, BoxLayout.Y_AXIS);
-		yPanel.setLayout(boxlayout);
+		Box bv = Box.createVerticalBox();
+		Box bh = Box.createHorizontalBox();
+		timerPanel.add(Box.createHorizontalGlue());
+		timerPanel.add(bh, BorderLayout.SOUTH);
+		timerPanel.add(bv, BorderLayout.CENTER);
 		
+		bh.add(Box.createHorizontalStrut(35));//add spacing from borders
 		
-		yPanel.setBorder(new EmptyBorder(new Insets(50, 300, 50, 50)));
+		bv.setBorder(new EmptyBorder(new Insets(50, 50, 50, 50)));
 		
-		yPanel.add(hoursLabel);
-		yPanel.add(inputHours);
+		bv.add(hoursLabel);
+		bv.add(inputHours);
 		
-		yPanel.add(minutesLabel);
-		yPanel.add(inputMinutes);
+		bv.add(minutesLabel);
+		bv.add(inputMinutes);
 		
-		yPanel.add(secondsLabel);
-		yPanel.add(inputSeconds);
+		bv.add(secondsLabel);
+		bv.add(inputSeconds);
 		
-		yPanel.add(getDisplaySeconds());
-		yPanel.add(getStartTimer());
-		yPanel.add(getRestartTimer());
+		bv.add(getDisplaySeconds());
 		
-		timerPanel.add(yPanel, BorderLayout.SOUTH);
+		bh.add(getStartTimer());
+		bh.add(getRestartTimer());
+		//yPanel.add(getStartTimer());
+		//yPanel.add(getRestartTimer());
+		
+
 		this.pack();
 		this.setVisible(true);
 	}
